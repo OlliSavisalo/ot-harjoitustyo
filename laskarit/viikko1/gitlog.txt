@@ -1,3 +1,5 @@
+TESTIMUOKKAUS
+
 ollisavi@dhcp-asv-69:~/OT2020/ot_viikko1/tiedostoja$ git log --stat | cat
 commit e4690f266eb43aad9d148916c7cff0c2c5491914
 Author: Olli Savisalo <olli.savisalo@helsinki.fi>
