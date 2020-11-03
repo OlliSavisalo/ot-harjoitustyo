@@ -1,6 +1,9 @@
 # Olli Savisalo, Ohjelmistotekniikka syksy 2020
 
-*Harjoitustekstiä kirjoitellaan githubin tarkastelua varten*
+## Tehtävät
 
+### Viikko 1
 
-Tällä harjoituksella tarkastelemme **Markdown-tyyliä**, mikä ei ole kaikille aikaisemmin tuttua.
+[komentorivi.txt](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+
+[gitlog.txt](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
