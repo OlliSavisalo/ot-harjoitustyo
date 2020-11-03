@@ -1,0 +1,97 @@
+ollisavi@dhcp-asv-69:~/OT2020/ot_viikko1/tiedostoja$ git log --stat | cat
+commit e4690f266eb43aad9d148916c7cff0c2c5491914
+Author: Olli Savisalo <olli.savisalo@helsinki.fi>
+Date:   Tue Nov 3 14:46:46 2020 +0200
+
+    poistettu ja muutettu nimeä
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 41cac4027f04c4afe6ad14ba2cf529c1b8a25d56
+Author: Olli Savisalo <olli.savisalo@helsinki.fi>
+Date:   Tue Nov 3 14:42:15 2020 +0200
+
+    lisätty tiedostoja-kansio ja filejä
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit e93cfd19be6b21b5342179c0c6f3ef46b84984b1
+Author: Olli Savisalo <olli.savisalo@helsinki.fi>
+Date:   Tue Nov 3 14:36:29 2020 +0200
+
+    lisätty ja poistettu tekstiä ja testattu add -p -komentoa
+
+ eka.txt    | 12 +++++++++++-
+ kolmas.txt | 55 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 66 insertions(+), 1 deletion(-)
+
+commit b56818dc353e3edc65ce3b2a2a7f5a557e6ee459
+Author: Olli Savisalo <olli.savisalo@helsinki.fi>
+Date:   Tue Nov 3 14:32:18 2020 +0200
+
+    poistettu toinen.txt ja uudelleennimetty tiedosto.txt
+
+ tiedosto.txt => eka.txt | 0
+ toinen.txt              | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit be3a470d4f59ac965af98136e12b65dac1d10c0a
+Author: Olli Savisalo <olli.savisalo@helsinki.fi>
+Date:   Tue Nov 3 14:26:07 2020 +0200
+
+    tiedosto.txt
+
+ tiedosto.txt | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+commit b9811a37549b09299bfd6e83ebcbd41052257787
+Author: Olli Savisalo <olli.savisalo@helsinki.fi>
+Date:   Tue Nov 3 14:24:13 2020 +0200
+
+    tekstin lisäys tiedostoon
+
+ tiedosto.txt | 106 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 106 insertions(+)
+
+commit 5ccb14be26aef0840b059434b22563d704218c68
+Author: Olli Savisalo <olli.savisalo@helsinki.fi>
+Date:   Tue Nov 3 14:21:13 2020 +0200
+
+    kansion lisäys
+
+ stuff/testi.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 3693197ebef2ba73e6836bbca655b30369cc649f
+Author: Olli Savisalo <olli.savisalo@helsinki.fi>
+Date:   Tue Nov 3 14:20:04 2020 +0200
+
+    lisäys
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 03727eaeb15ddab7e255f9db973dd99ca84bec11
+Author: Olli Savisalo <olli.savisalo@helsinki.fi>
+Date:   Tue Nov 3 14:17:58 2020 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 4 ++++
+ toinen.txt   | 0
+ 2 files changed, 4 insertions(+)
+
+commit 0d7175e7acf8366e7a37fb3afb11035063f00584
+Author: Olli Savisalo <olli.savisalo@helsinki.fi>
+Date:   Tue Nov 3 14:15:24 2020 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ollisavi@dhcp-asv-69:~/OT2020/ot_viikko1/tiedostoja$ 
