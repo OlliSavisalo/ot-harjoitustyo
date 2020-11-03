@@ -1,4 +1,4 @@
-#Olli Savisalo, Ohjelmistotekniikka syksy 2020
+# Olli Savisalo, Ohjelmistotekniikka syksy 2020
 
 *Harjoitustekstiä kirjoitellaan githubin tarkastelua varten*
 
