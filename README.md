@@ -1,5 +1,17 @@
 # Olli Savisalo, Ohjelmistotekniikka syksy 2020
 
+## Harjoitustyö, Solitaire
+
+[Solitaire](https://github.com/OlliSavisalo/ot-harjoitustyo/tree/master/Solitaire)
+
+### [Dokumentaatio](https://github.com/OlliSavisalo/ot-harjoitustyo/tree/master/Solitaire/dokumentaatio)
+
+[Vaatimusmäärittely](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/Solitaire/dokumentaatio/vaatimusmaarittely.md)
+
+[Tuntikirjanpito](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/Solitaire/dokumentaatio/tuntikirjanpito.md)
+
+
+
 ## Tehtävät
 
 ### Viikko 1
