@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -17,9 +12,18 @@ public class Card {
     String suit;
     int number;
     
+    // Added if's for testing that all the cards are formed right
     public Card(String suit, int number) {
-        this.suit = suit;
-        this.number = number;
+        if (suit.equals("Hearts") || suit.equals("Diamonds") || suit.equals("Spades") || suit.equals("Clubs")) {
+            this.suit = suit;
+        } else {
+            throw new IllegalArgumentException();
+        }
+        if (number > 0 && number < 14) {
+            this.number = number;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
     
     public String getSuit() {

@@ -14,13 +14,13 @@ public class Table {
     ArrayDeque<Card> finalDeckSpades;
     ArrayDeque<Card> finalDeckClubs;
     // In the table we have 7 different decks
-    ArrayDeque<Card> tableDeck1;
-    ArrayDeque<Card> tableDeck2;
-    ArrayDeque<Card> tableDeck3;
-    ArrayDeque<Card> tableDeck4;
-    ArrayDeque<Card> tableDeck5;
-    ArrayDeque<Card> tableDeck6;
-    ArrayDeque<Card> tableDeck7;
+    ArrayList<Card> tableDeck1;
+    ArrayList<Card> tableDeck2;
+    ArrayList<Card> tableDeck3;
+    ArrayList<Card> tableDeck4;
+    ArrayList<Card> tableDeck5;
+    ArrayList<Card> tableDeck6;
+    ArrayList<Card> tableDeck7;
     
     public Table() {
         // In mainDeck we want to have the whole shuffled deck and we can start dealing cards from there
@@ -31,13 +31,13 @@ public class Table {
         finalDeckDiamonds = new ArrayDeque<>();
         finalDeckSpades = new ArrayDeque<>();
         finalDeckClubs = new ArrayDeque<>();
-        tableDeck1 = new ArrayDeque<>();
-        tableDeck2 = new ArrayDeque<>();
-        tableDeck3 = new ArrayDeque<>();
-        tableDeck4 = new ArrayDeque<>();
-        tableDeck5 = new ArrayDeque<>();
-        tableDeck6 = new ArrayDeque<>();
-        tableDeck7 = new ArrayDeque<>();
+        tableDeck1 = new ArrayList<>();
+        tableDeck2 = new ArrayList<>();
+        tableDeck3 = new ArrayList<>();
+        tableDeck4 = new ArrayList<>();
+        tableDeck5 = new ArrayList<>();
+        tableDeck6 = new ArrayList<>();
+        tableDeck7 = new ArrayList<>();
     }
     
     public void startDeal() {
@@ -47,19 +47,19 @@ public class Table {
         // We will always take the last card from main deck (delete it) and add it to the right table deck
         for (int i = 0; i < 28; i++) {
             if (i < 1) {
-                tableDeck1.addLast(mainDeck.pollLast());
+                tableDeck1.add(mainDeck.pollLast());
             } else if (i >= 1 && i <= 2) {
-                tableDeck2.addLast(mainDeck.pollLast());
+                tableDeck2.add(mainDeck.pollLast());
             } else if (i > 2 && i <= 5) {
-                tableDeck3.addLast(mainDeck.pollLast());
+                tableDeck3.add(mainDeck.pollLast());
             } else if (i > 5 && i <= 9) {
-                tableDeck4.addLast(mainDeck.pollLast());
+                tableDeck4.add(mainDeck.pollLast());
             } else if (i > 9 && i <= 14) {
-                tableDeck5.addLast(mainDeck.pollLast());
+                tableDeck5.add(mainDeck.pollLast());
             } else if (i > 14 && i <= 20) {
-                tableDeck6.addLast(mainDeck.pollLast());
+                tableDeck6.add(mainDeck.pollLast());
             } else {
-                tableDeck7.addLast(mainDeck.pollLast());
+                tableDeck7.add(mainDeck.pollLast());
             }
         }
     }
@@ -70,7 +70,7 @@ public class Table {
             if (c.getNumber() == 1) return true;
         } else {
             Card check = (Card) d.getLast();
-            if (c.getNumber() == check.getNumber() && c.getSuit().equals(check.getSuit())) {
+            if (c.getNumber()-1 == check.getNumber() && c.getSuit().equals(check.getSuit())) {
                 return true;
             } 
         }
@@ -78,11 +78,11 @@ public class Table {
     }
     
     // Check if card is possible to add in to desired table stack
-    public boolean possibleToAddToTableDeck(Card c, ArrayDeque d) {
+    public boolean possibleToAddToTableDeck(Card c, ArrayList d) {
         if (d.isEmpty()) {
             return true;
         } else {
-            Card check = (Card) d.getLast();
+            Card check = (Card) d.get(d.size()-1);
             if (c.getSuit().equals("Hearts")) {
                 if (check.getSuit().equals("Spades") || check.getSuit().equals("Clubs")) {
                     if (c.getNumber() == check.getNumber()-1) return true;
@@ -110,12 +110,93 @@ public class Table {
             to.addLast(from.pollLast());
         }
     }
-    // Move a card to table deck
-    public void moveCardToTableDeck(ArrayDeque from, ArrayDeque to) {
-        Card c = (Card) from.getLast();
-        if (possibleToAddToTableDeck(c, to)) {
-            to.addLast(from.pollLast());
+    // Move a card to final deck from table deck
+    public void moveCardToFinalDeck(ArrayList from, ArrayDeque to) {
+        Card c = (Card) from.get(from.size()-1);
+        if (possibleToAddToFinalDeck(c, to)) {
+            to.addLast(from.remove(from.size()-1));
         }
     }
-    
+    // Move a card to table deck
+    public void moveCardToTableDeck(ArrayDeque from, ArrayList to) {
+        Card c = (Card) from.getLast();
+        if (possibleToAddToTableDeck(c, to)) {
+            to.add(from.pollLast());
+        }
+    }
+    // Move a card to table deck from table deck
+    public void moveCardToTableDeck(ArrayList from, ArrayList to) {
+        Card c = (Card) from.get(from.size()-1);
+        if (possibleToAddToTableDeck(c, to)) {
+            to.add(from.get(from.size()-1));
+            from.remove(from.size()-1);
+        }
+    }
+    // Move the top card of main deck to the bottom of the pile
+    public void moveMainDeckCardToTheBottom() {
+        mainDeck.addFirst(mainDeck.pollLast());
+    }
+    // Is the card valid for movable table stack
+    public boolean isCardValidForMovableStack(Card check, Card onTop) {
+        if (check.suit.equals("Clubs")) {
+            if (onTop.suit.equals("Hearts") || onTop.suit.equals("Diamonds")) {
+                if (check.number-1 == onTop.number) {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        } else if (check.suit.equals("Spades")) {
+            if (onTop.suit.equals("Hearts") || onTop.suit.equals("Diamonds")) {
+                if (check.number-1 == onTop.number) {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        } else if (check.suit.equals("Hearts")) {
+            if (onTop.suit.equals("Clubs") || onTop.suit.equals("Spades")) {
+                if (check.number-1 == onTop.number) {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        } else if (check.suit.equals("Diamonds")) {
+            if (onTop.suit.equals("Clubs") || onTop.suit.equals("Spades")) {
+                if (check.number-1 == onTop.number) {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        }
+        return false;
+    }
+    // Check how big stack is movable from table stack with one turn
+    public int howBigStackIsMovableFromTableStack(ArrayList from) {
+        int count = 1;
+        for (int i = 1; i < from.size(); i++) {
+            Card check = (Card) from.get(from.size()-(i+1));
+            Card onTop = (Card) from.get(from.size()-i);
+            if (isCardValidForMovableStack(check, onTop)) {
+                count++;
+            } else {
+                break;
+            }
+        }
+        return count;
+    }
+    // Move a stack from table deck
+    // n is the value of how many cards want to be moved
+    public void moveAStackFromTableStack(int n, ArrayList from, ArrayList to) {
+        Card firstOfStack = (Card) from.get(from.size()-(n));
+        if (possibleToAddToTableDeck(firstOfStack, to)) {
+            for (int i = n; i > 0; i--) {
+                Card move = (Card) from.get(from.size()-(i));
+                from.remove(move);
+                to.add(move);
+            }
+        }
+    }
 }
