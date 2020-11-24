@@ -28,6 +28,7 @@ Testikattavuusraportti luodaan komennolla
 mvn jacoco:report
 ```
 Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto target/site/jacoco/index.html
+[Viimeisin testiraportti](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/Solitaire/dokumentaatio/kuvat/jacoco_solitaire.png)
 
 #### Suoritettavan Jar:n generointi
 Komento
@@ -42,7 +43,7 @@ mvn javadoc:javadoc
 ```
 
 #### Checkstyle
-Tiedostoon checkstyle.xml määrittelemät tarkistukset suoritetaan komennolla
+Tiedostoon [checkstyle.xml](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/Solitaire/dokumentaatio/kuvat/Checkstyle.png) määrittelemät tarkistukset suoritetaan komennolla
 ```
 mvn jxr:jxr checkstyle:checkstyle
 ```
