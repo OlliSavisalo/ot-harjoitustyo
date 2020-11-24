@@ -2,36 +2,23 @@
 
 ## Harjoitustyö, Solitaire
 
+Sovellus on perinteinen korttipeli Pasianssi (tarkemmin Klondike-pasianssi), jossa käyttäjä pyrkii pinoamaan kortit maittain järjestyksessä 1:stä 13:sta.
+Pelin viimeisimmässä versiossa on käytössä tekstiliittymä, joka kysyy korttien siirrot tekstimuodossa ja ottaa komennot vastaan luvuilla 0-12.
+
+### Viimeisin release
 [Solitaire](https://github.com/OlliSavisalo/ot-harjoitustyo/tree/master/Solitaire)
 
-### [Dokumentaatio](https://github.com/OlliSavisalo/ot-harjoitustyo/tree/master/Solitaire/dokumentaatio)
+### Dokumentaatio
+
+[Käyttöohje](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/Solitaire/dokumentaatio/kayttoohje.md)
 
 [Vaatimusmäärittely](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/Solitaire/dokumentaatio/vaatimusmaarittely.md)
 
 [Tuntikirjanpito](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/Solitaire/dokumentaatio/tuntikirjanpito.md)
 
+### Komentorivitoiminnot
 
+#### Testaus
+Testit suoritetaan komennolla
+```mvn test```
 
-## Tehtävät
-
-### Viikko 1
-
-[komentorivi.txt](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
-
-[gitlog.txt](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
-
-### Viikko 2
-
-[Maksukortti](https://github.com/OlliSavisalo/ot-harjoitustyo/tree/master/laskarit/viikko2/Maksukortti)
-
-[Unicafe](https://github.com/OlliSavisalo/ot-harjoitustyo/tree/master/laskarit/viikko2/Unicafe)
-
-[Unicafe Jacoco report](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/laskarit/viikko2/Jacoco_Unicafe.png)
-
-### Viikko 3
-
-[Monopoli UML](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/laskarit/viikko3/Monopoly_UML.jpg)
-
-[Machine](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/laskarit/viikko3/Machine.png)
-
-[HSL](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/laskarit/viikko3/HSL.png)
