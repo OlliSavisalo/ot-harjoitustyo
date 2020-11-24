@@ -18,7 +18,7 @@ public class Solitaire {
         Scanner input = new Scanner(System.in);
         System.out.println("You can move following cards: ");
         for (int i = n; i > 0; i--) {
-            System.out.print(from.get(from.size() - i)+" ");
+            System.out.print(from.get(from.size() - i) + " ");
         }
         System.out.println("You can move 1-" + n + " cards.");
         System.out.println("How many you wish to move?");

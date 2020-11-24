@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -41,4 +42,39 @@ public class TableTest {
         assertTrue(table.finalDeckDiamonds.isEmpty());
     }
     
+    @Test
+    public void addingToFinalDecksRightCards() {
+        table.finalDeckClubs.addLast(new Card("Clubs", 1));
+        table.finalDeckHearts.addLast(new Card("Hearts", 1));
+        table.finalDeckSpades.addLast(new Card("Spades", 1));
+        table.finalDeckDiamonds.addLast(new Card("Diamonds", 1));
+        assertEquals("Clubs, 1", table.finalDeckClubs.getLast().toString());
+        assertEquals("Hearts, 1", table.finalDeckHearts.getLast().toString());
+        assertEquals("Spades, 1", table.finalDeckSpades.getLast().toString());
+        assertEquals("Diamonds, 1", table.finalDeckDiamonds.getLast().toString());
+    }
+    
+    @Test
+    public void movingToFinalDecksWrongCards() {
+        table.finalDeckClubs.addLast(new Card("Clubs", 1));
+        table.finalDeckHearts.addLast(new Card("Hearts", 1));
+        table.finalDeckSpades.addLast(new Card("Spades", 1));
+        table.finalDeckDiamonds.addLast(new Card("Diamonds", 1));
+        ArrayList<Card> test = new ArrayList<>();
+        test.add(new Card("Clubs", 3));
+        table.moveCardToFinalDeck(test, table.finalDeckClubs);
+        table.moveCardToFinalDeck(test, table.finalDeckSpades);
+        table.moveCardToFinalDeck(test, table.finalDeckDiamonds);
+        table.moveCardToFinalDeck(test, table.finalDeckHearts);
+        assertEquals("Clubs, 1", table.finalDeckClubs.getLast().toString());
+        assertEquals("Hearts, 1", table.finalDeckHearts.getLast().toString());
+        assertEquals("Spades, 1", table.finalDeckSpades.getLast().toString());
+        assertEquals("Diamonds, 1", table.finalDeckDiamonds.getLast().toString());
+    }
+    @Test
+    public void movingTopCardFromHandDeckToBottom() {
+        Card c = table.mainDeck.getLast();
+        table.moveMainDeckCardToTheBottom();
+        assertEquals(c, table.mainDeck.getFirst());
+    }
 }
