@@ -20,5 +20,7 @@ Pelin viimeisimmässä versiossa on käytössä tekstiliittymä, joka kysyy kort
 
 #### Testaus
 Testit suoritetaan komennolla
-```mvn test```
+```
+mvn test
+```
 
