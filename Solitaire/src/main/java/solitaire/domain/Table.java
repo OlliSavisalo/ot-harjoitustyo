@@ -122,29 +122,21 @@ public class Table {
             return true;
         } else {
             Card check = (Card) d.get(d.size() - 1);
-            if (c.getSuit().equals("Hearts")) {
-                if (check.getSuit().equals("Spades") || check.getSuit().equals("Clubs")) {
-                    if (c.getNumber() == check.getNumber() - 1) {
-                        return true;
-                    }
+            if (c.getSuit().equals("Hearts") && check.getSuit().equals("Spades") || check.getSuit().equals("Clubs")) {
+                if (c.getNumber() == check.getNumber() - 1) {
+                    return true;
                 }
-            } else if (c.getSuit().equals("Diamonds")) {
-                if (check.getSuit().equals("Spades") || check.getSuit().equals("Clubs")) {
-                    if (c.getNumber() == check.getNumber() - 1) {
-                        return true;
-                    }
+            } else if (c.getSuit().equals("Diamonds") && check.getSuit().equals("Spades") || check.getSuit().equals("Clubs")) {
+                if (c.getNumber() == check.getNumber() - 1) {
+                    return true;
                 }
-            } else if (c.getSuit().equals("Spades")) {
-                if (check.getSuit().equals("Hearts") || check.getSuit().equals("Diamonds")) {
-                    if (c.getNumber() == check.getNumber() - 1) {
-                        return true;
-                    }
+            } else if (c.getSuit().equals("Spades") && check.getSuit().equals("Hearts") || check.getSuit().equals("Diamonds")) {
+                if (c.getNumber() == check.getNumber() - 1) {
+                    return true;
                 }
-            } else if (c.getSuit().equals("Clubs")) {
-                if (check.getSuit().equals("Hearts") || check.getSuit().equals("Diamonds")) {
-                    if (c.getNumber() == check.getNumber() - 1) {
-                        return true;
-                    }
+            } else if (c.getSuit().equals("Clubs") && check.getSuit().equals("Hearts") || check.getSuit().equals("Diamonds")) {
+                if (c.getNumber() == check.getNumber() - 1) {
+                    return true;
                 }
             }
         }
@@ -225,11 +217,10 @@ public class Table {
     public int howBigStackIsMovableFromTableStack(int n) {
         int count = 1;
         if (n >= 6 && n <= 12) {
-            ArrayList from = moves6to12.get(n);
-            if (from.size() > 1) {
-                for (int i = 1; i < from.size(); i++) {
-                    Card check = (Card) from.get(from.size() - (i + 1));
-                    Card onTop = (Card) from.get(from.size() - i);
+            if (moves6to12.get(n).size() > 1) {
+                for (int i = 1; i < moves6to12.get(n).size(); i++) {
+                    Card check = (Card) moves6to12.get(n).get(moves6to12.get(n).size() - (i + 1));
+                    Card onTop = (Card) moves6to12.get(n).get(moves6to12.get(n).size() - i);
                     if (isCardValidForMovableStack(check, onTop)) {
                         count++;
                     } else {
@@ -237,7 +228,7 @@ public class Table {
                     }
                 }
                 if (count > 1) {
-                    return howManyCardsWantToMove(count, from);
+                    return howManyCardsWantToMove(count, moves6to12.get(n));
                 }
             }
         }
@@ -337,13 +328,13 @@ public class Table {
             }
         }
     }
-    
+
     // Calculate and return string of the game duration.
     public String getTimeUsedInGame(long startTime, long endTime) {
         long totalTime = (endTime - startTime) / 1000000000;
         return "Your game took " + totalTime + " seconds.";
     }
-    
+
     // Return the count of moves made as a string
     public String getMoves() {
         return "You made total of: " + count + " moves during the game.";

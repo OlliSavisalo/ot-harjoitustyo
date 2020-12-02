@@ -123,7 +123,7 @@ public class Solitaire {
         startTime = System.nanoTime();
         while (table.finalDeckClubs.size() <= 13 && table.finalDeckDiamonds.size() <= 13 && table.finalDeckHearts.size() <= 13 && table.finalDeckSpades.size() <= 13) {
             printHandAndFinalDecks();
-            printTableDecks();//          
+            printTableDecks();        
             printMovesFrom();
             int moveStart = input.nextInt();
             if (moveStart == 0) {

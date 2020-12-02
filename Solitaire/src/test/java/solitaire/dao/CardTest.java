@@ -30,6 +30,12 @@ public class CardTest {
     }
     
     @Test
+    public void cardAddedNumberAndSuitIsRight() {
+        Card c = new Card("Hearts", 2);
+        assertEquals("Hearts, 2", c.toString());
+    }
+    
+    @Test
     public void suitIsRight() {
         assertEquals("Hearts", card.getSuit());
     }

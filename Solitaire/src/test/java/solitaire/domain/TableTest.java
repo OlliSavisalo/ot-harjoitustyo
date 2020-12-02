@@ -61,6 +61,45 @@ public class TableTest {
     }
     
     @Test
+    public void moveACardToTableDeckFromDeque() {
+        table.mainDeck.addLast(new Card("Hearts", 5));
+        table.tableDeck1.clear();
+        table.moveCardToTableDeck(table.mainDeck, table.tableDeck1);
+        assertEquals("Hearts, 5", table.tableDeck1.get(table.tableDeck1.size()-1).toString());
+    }
+    @Test
+    public void moveAWrongCardToTableDeckFromDeque() {
+        table.mainDeck.addLast(new Card("Hearts", 5));
+        table.tableDeck1.clear();
+        table.tableDeck1.add(new Card("Hearts", 2));
+        table.moveCardToTableDeck(table.mainDeck, table.tableDeck1);
+        assertEquals("Hearts, 2", table.tableDeck1.get(table.tableDeck1.size()-1).toString());
+    }
+    
+    @Test
+    public void isCardValidForMovableStack() {
+        Card c = new Card("Clubs", 2);
+        Card check = new Card("Hearts", 1);
+        assertTrue(table.isCardValidForMovableStack(c, check));
+        c = new Card("Spades", 2);
+        check = new Card("Hearts", 1);
+        assertTrue(table.isCardValidForMovableStack(c, check));
+        c = new Card("Hearts", 2);
+        check = new Card("Clubs", 1);
+        assertTrue(table.isCardValidForMovableStack(c, check));
+        c = new Card("Diamonds", 2);
+        check = new Card("Clubs", 1);
+        assertTrue(table.isCardValidForMovableStack(c, check));
+    }
+    
+    @Test
+    public void cardIsNotValidForMovableStack() {
+        Card c = new Card("Clubs", 1);
+        Card check = new Card("Hearts", 1);
+        assertFalse(table.isCardValidForMovableStack(c, check));
+    }
+    
+    @Test
     public void movingToFinalDecksWrongCards() {
         table.finalDeckClubs.addLast(new Card("Clubs", 1));
         table.finalDeckHearts.addLast(new Card("Hearts", 1));
@@ -82,5 +121,91 @@ public class TableTest {
         Card c = table.mainDeck.getLast();
         table.moveMainDeckCardToTheBottom();
         assertEquals(c, table.mainDeck.getFirst());
+    }
+    
+    @Test
+    public void howBigStackIsMovableInTableDeck() {
+        table.tableDeck1.clear();
+        table.tableDeck1.add(new Card("Hearts", 2));
+        assertEquals(1, table.howBigStackIsMovableFromTableStack(6));
+    }
+    
+    @Test
+    public void testTimeUsedInGamePrintsRightWay() {
+        assertEquals("Your game took 1 seconds.",table.getTimeUsedInGame(1000000000, 2000000000));        
+    }
+    
+    @Test
+    public void movesCountIsRight() {
+        table.tableDeck1.clear();
+        table.mainDeck.addLast(new Card("Hearts", 2));
+        table.doTheMove(1, 1, 6);
+        table.mainDeck.addLast(new Card("Spades", 1));
+        table.doTheMove(1, 1, 6);
+        assertEquals("You made total of: 2 moves during the game.", table.getMoves());
+    }
+    
+    @Test
+    public void testIfItIsPossibleToAddToFinalDeck() {
+        assertTrue(table.possibleToAddToFinalDeck(new Card("Hearts", 1), table.finalDeckHearts));
+        table.finalDeckHearts.addLast(new Card("Hearts", 1));
+        assertTrue(table.possibleToAddToFinalDeck(new Card("Hearts", 2), table.finalDeckHearts));        
+    }
+    
+    @Test
+    public void moveCardToFinalDeckFromDeque() {
+        table.mainDeck.addLast(new Card("Hearts", 1));
+        table.moveCardToFinalDeck(table.mainDeck, table.finalDeckHearts);
+        assertEquals("Hearts, 1", table.finalDeckHearts.getLast().toString());
+    }
+    
+    @Test
+    public void moveAStackFromTableStack() {
+        table.tableDeck1.clear();
+        table.tableDeck2.clear();
+        table.tableDeck1.add(new Card("Hearts", 2));
+        table.tableDeck1.add(new Card("Spades", 1));
+        table.moveAStackFromTableStack(2, table.tableDeck1, table.tableDeck2);
+        assertEquals("Hearts, 2", table.tableDeck2.get(table.tableDeck2.size()-2).toString());
+        assertEquals("Spades, 1", table.tableDeck2.get(table.tableDeck2.size()-1).toString());
+    }
+    
+    @Test
+    public void doTheMoveFromMainDeckToFinalDeck() {
+        table.mainDeck.addLast(new Card("Hearts", 1));
+        table.doTheMove(1, 1, 4);
+        assertEquals("You made total of: 1 moves during the game.", table.getMoves());
+        assertEquals("Hearts, 1", table.finalDeckHearts.getLast().toString());
+    }
+    
+    @Test
+    public void doTheMoveFromFinalDeckToTableDeck() {
+        table.tableDeck1.clear();
+        table.tableDeck1.add(new Card("Spades", 2));
+        table.finalDeckHearts.addLast(new Card("Hearts", 1));
+        table.doTheMove(4, 1, 6);
+        assertEquals("You made total of: 1 moves during the game.", table.getMoves());
+        assertEquals("Hearts, 1", table.tableDeck1.get(table.tableDeck1.size()-1).toString());
+    }
+    
+    @Test
+    public void doTheMoveFromTableDeckToFinalDeck() {
+        table.tableDeck1.clear();
+        table.tableDeck1.add(new Card("Hearts", 2));
+        table.finalDeckHearts.addLast(new Card("Hearts", 1));
+        table.doTheMove(6, 1, 4);
+        assertEquals("You made total of: 1 moves during the game.", table.getMoves());
+        assertEquals("Hearts, 2", table.finalDeckHearts.getLast().toString());
+    }
+    
+    @Test
+    public void doTheMoveFromTableDeckToTableDeck() {
+        table.tableDeck1.clear();
+        table.tableDeck1.add(new Card("Spades", 2));
+        table.tableDeck2.clear();
+        table.tableDeck2.add(new Card("Hearts", 1));
+        table.doTheMove(7, 1, 6);
+        assertEquals("You made total of: 1 moves during the game.", table.getMoves());
+        assertEquals("Hearts, 1", table.tableDeck1.get(table.tableDeck1.size()-1).toString());
     }
 }
