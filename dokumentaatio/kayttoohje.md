@@ -4,7 +4,7 @@ Lataa .jar-tiedosto [Solitaire, viikko 5](https://github.com/OlliSavisalo/ot-har
 
 tai vaihtoehtoisesti
 
-Lataa ja pura tiedosto [Solitaire.zip](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/Solitaire.zip)
+Lataa ja pura tiedosto [Solitaire.zip](https://github.com/OlliSavisalo/ot-harjoitustyo/archive/viikko5.zip)
 
 ## Ohjelman käynnistys
 
