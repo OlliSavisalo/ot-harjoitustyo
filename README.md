@@ -5,8 +5,8 @@
 Sovellus on perinteinen korttipeli Pasianssi (tarkemmin Klondike-pasianssi), jossa käyttäjä pyrkii pinoamaan kortit maittain järjestyksessä 1:stä 13:sta.
 Pelin viimeisimmässä versiossa on käytössä tekstiliittymä, joka kysyy korttien siirrot tekstimuodossa ja ottaa komennot vastaan luvuilla 0-12.
 
-### Viimeisin release
-[Solitaire](https://github.com/OlliSavisalo/ot-harjoitustyo/tree/master/Solitaire)
+### Releaset
+[Solitaire, viikko 5](https://github.com/OlliSavisalo/ot-harjoitustyo/releases/tag/viikko5)
 
 ### Dokumentaatio
 
