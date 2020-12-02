@@ -8,9 +8,9 @@
 | 17.11 |  4   | Sovelluksen perusosien koodaamista ja testien tekemistä |
 | 21.11 |  4   | Sovelluksen rakenteen parantamista  |
 | 24.11 |  7   | Sovelluksen rakenteen parantamista ja tekstikäyttöliittymän tekeminen  |
+| 01.12 |  7   | Sovelluksen uudelleen järjestämistä, mm. pakkausrakenne uusiksi, käyttöliittymä uusiksi |
+| 02.12 |  8   | Sovelluksen uudelleen järjestämistä, toiminnallisuuksien lisäämistä, testien sekä kaavioiden tekemistä ja githubin päivittämistä  |
 |       |      |  |
 |       |      |  |
 |       |      |  |
-|       |      |  |
-|       |      |  |
-| yht   |  22  | | 
+| yht   |  37  | | 
