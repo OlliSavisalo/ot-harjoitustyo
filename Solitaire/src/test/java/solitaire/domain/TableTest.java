@@ -1,8 +1,13 @@
+package solitaire.domain;
+
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
+import solitaire.dao.Card;
 import static org.junit.Assert.*;
+
 
 /**
  *
@@ -11,10 +16,11 @@ import static org.junit.Assert.*;
 public class TableTest {
     
     Table table;
+    Scanner input;
     
     @Before
     public void setUp() {
-        table = new Table();
+        table = new Table(input);
         table.startDeal();
     }
     
