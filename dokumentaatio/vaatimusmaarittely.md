@@ -13,7 +13,7 @@ Sovelluksella on vain yksi käyttäjärooli ja se on normaali käyttäjä.
 
 Sovellus koostuu yhdestä näkymästä ja näkymän päälle tulee alussa pienempi ponnahdusikkuna, josta voi aloittaa uuden pelin tai tarkistaa nopeimpien suoritusten tuloksen. Pelin lopussa tulee myös ponnahdusikkuna, johon voi kirjoittaa oman nimimerkin, mikäli haluaa tuloksensa listalle.
 
-<img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/Solitaire/dokumentaatio/kuvat/kayttoliittymaluonnos.jpg" width="750">
+<img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/kayttoliittymaluonnos.jpg" width="750">
 
 ## Perusversion tarjoama toiminnallisuus
 
