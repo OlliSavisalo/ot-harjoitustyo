@@ -1,11 +1,22 @@
 # Käyttöohje Solitaire
 
+Lataa .jar-tiedosto [Solitaire, viikko 5](https://github.com/OlliSavisalo/ot-harjoitustyo/releases/tag/viikko5)
+
+tai vaihtoehtoisesti
+
 Lataa ja pura tiedosto [Solitaire.zip](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/Solitaire.zip)
 
 ## Ohjelman käynnistys
+
+Jar-tiedoston avaaminen komentorivillä
+```
+java -jar Solitaire.jar
+
+```
+
 Toistaiseksi ohjelma on pelkästään tekstimuodossa oleva peli, joten ohjelman voi käynnistää Netbeansissa tai terminaalissa komennolla:
 ```
-java main.java
+java Paaohjelma.java
 ```
 
 ## Ohjelman kulku
