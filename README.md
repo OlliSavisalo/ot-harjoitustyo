@@ -10,6 +10,8 @@ Pelin viimeisimmässä versiossa on käytössä tekstiliittymä, joka kysyy kort
 
 ### Dokumentaatio
 
+[Arkkitehtuurikuvaus](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
 [Käyttöohje](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kayttoohje.md)
 
 [Vaatimusmäärittely](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
