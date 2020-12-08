@@ -5,8 +5,10 @@
  */
 package solitaire.ui;
 
+import java.sql.SQLException;
 import java.util.*;
 import java.util.Map.Entry;
+import solitaire.dao.ToplistDao;
 import solitaire.domain.Table;
 
 /**
@@ -21,6 +23,7 @@ public class Solitaire {
     Map<Integer, String> commandsMoveTo;
     long startTime;
     long endTime;
+    
 
     public Solitaire(Scanner input) {
         this.table = new Table(input);
@@ -29,6 +32,7 @@ public class Solitaire {
         this.commandsMoveTo = new TreeMap<>();
         enterCommandsToMoveFrom();
         enterCommandsToMoveTo();
+
     }
 
     // Enters moves to Treemap so we can print them when wanted.
@@ -103,27 +107,74 @@ public class Solitaire {
         System.out.println();
         System.out.println();
     }
-    
+
     // Print end of the game, if all final decks full you're a winner. Otherwise loser
     // Print also the duration of the game
-    public void printEndGame() {
+    public void printEndGame() throws SQLException {
         if (table.finalDeckClubs.size() == 13 && table.finalDeckDiamonds.size() == 13 && table.finalDeckHearts.size() == 13 && table.finalDeckSpades.size() == 13) {
             System.out.println("Congratulations! You're a winner!");
             System.out.println(table.getTimeUsedInGame(startTime, endTime));
             System.out.println(table.getMoves());
         } else {
-            System.out.println("You didn't finish the game. Better luck next time."); 
+            System.out.println("You didn't finish the game. Better luck next time.");
             System.out.println(table.getTimeUsedInGame(startTime, endTime));
             System.out.println(table.getMoves());
         }
     }
+
+    // Which toplist wants to be seen
+    public void chooseTopList(ToplistDao topList) throws SQLException {        
+        System.out.println("Which toplist you want to see?");
+        System.out.println("1. Fastest times");
+        System.out.println("2. Fewest moves");
+        int choice = input.nextInt();
+        if (choice == 1) {
+            getTopListInTimeOrder(topList);
+        } else if (choice == 2) {
+            getTopListInMoveOrder(topList);
+        } else {
+            System.out.println("Wrong choice, returning to main menu.");
+        }
+    }
+
+    // Prints toplist database in time order
+    public void getTopListInTimeOrder(ToplistDao topList) throws SQLException {        
+        topList.getToplistInTimeOrder();
+    }
+
+    // Prints toplist database in move order
+    public void getTopListInMoveOrder(ToplistDao topList) throws SQLException {        
+        topList.getToplistInMoveOrder();
+    }
+
+    // Prints the first menu where you can decide whether to start new game, check toplist or exit
+    public void printMainMenu() throws SQLException {
+        ToplistDao topList = new ToplistDao();
+        System.out.println("Welcome to Solitaire!");
+        while (true) {
+            System.out.println("Decide from the following options: ");
+            System.out.println("1. Start new Game");
+            System.out.println("2. Check toplist");
+            System.out.println("3. Exit the game.");
+            int firstChoice = input.nextInt();
+            if (firstChoice == 1) {
+                table.startDeal();
+                playTheGame();
+            } else if (firstChoice == 2) {
+                chooseTopList(topList);
+            } else if (firstChoice == 3) {
+                break;
+            } else {
+                System.out.println("Wrong choice, please try again.");
+            }
+        }
+    }
     
-    public void startNewGame() {
-        table.startDeal();
+    public void playTheGame() throws SQLException {
         startTime = System.nanoTime();
         while (table.finalDeckClubs.size() <= 13 && table.finalDeckDiamonds.size() <= 13 && table.finalDeckHearts.size() <= 13 && table.finalDeckSpades.size() <= 13) {
             printHandAndFinalDecks();
-            printTableDecks();        
+            printTableDecks();
             printMovesFrom();
             int moveStart = input.nextInt();
             if (moveStart == 0) {
@@ -139,5 +190,10 @@ public class Solitaire {
         }
         endTime = System.nanoTime();
         printEndGame();
+    }
+
+    public void startNewGame() throws SQLException {
+        printMainMenu();  
+        
     }
 }

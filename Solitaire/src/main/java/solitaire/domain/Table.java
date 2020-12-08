@@ -77,11 +77,16 @@ public class Table {
         moves6to12.put(12, tableDeck7);
     }
 
+    /**
+     * Since we know that we will deal total of 28 cards, we can loop this
+     * Normally table decks are dealt this way: 1st cards of all table decks,
+     * 2nd cards of decks 2 to 7, 3rd cards of decks 3 to 7 etc. Since we don't
+     * have any way to know the upcoming cards, we will deal the cards this way:
+     * table deck 1 add 1 card, table deck 2 add 2 cards, table deck 3 add 3
+     * cards etc We will always take the last card from main deck (delete it)
+     * and add it to the right table deck
+     */
     public void startDeal() {
-        // Since we know that we will deal total of 28 cards, we can loop this
-        // Normally table decks are dealt this way: 1st cards of all table decks, 2nd cards of decks 2 to 7, 3rd cards of decks 3 to 7 etc.
-        // Since we don't have any way to know the upcoming cards, we will deal the cards this way: table deck 1 add 1 card, table deck 2 add 2 cards, table deck 3 add 3 cards etc
-        // We will always take the last card from main deck (delete it) and add it to the right table deck
         for (int i = 0; i < 28; i++) {
             if (i < 1) {
                 tableDeck1.add(mainDeck.pollLast());
@@ -101,7 +106,15 @@ public class Table {
         }
     }
 
-    // Check if card is possible to add in to desired final stack
+    /**
+     * Check if card is possible to add in to desired final stack
+     *
+     * @param c card chosen from stack
+     * @param d stack where user wants to put the card
+     *
+     * @return true if stack is empty and number is 1, or number +1 from
+     * previous number. false if it's not possible to put the card on the stack
+     */
     public boolean possibleToAddToFinalDeck(Card c, ArrayDeque d) {
         if (d.isEmpty()) {
             if (c.getNumber() == 1) {
@@ -116,7 +129,15 @@ public class Table {
         return false;
     }
 
-    // Check if card is possible to add in to desired table stack
+    /**
+     * Check if card is possible to add in to desired table stack
+     *
+     * @param c card chosen from stack
+     * @param d list where user wants to put the card
+     *
+     * @return true if list is empty or it's otherwise possible to put the card.
+     * false if it's not possible to put the card on the stack
+     */
     public boolean possibleToAddToTableDeck(Card c, ArrayList d) {
         if (d.isEmpty()) {
             return true;
@@ -143,7 +164,12 @@ public class Table {
         return false;
     }
 
-    // Move a card to final deck
+    /**
+     * Move a card from ArrayDeque to final deck
+     *
+     * @param from ArrayDeque where the card is moved from
+     * @param to ArrayDeque where the card is moved to
+     */
     public void moveCardToFinalDeck(ArrayDeque from, ArrayDeque to) {
         Card c = (Card) from.getLast();
         if (possibleToAddToFinalDeck(c, to)) {
@@ -151,7 +177,12 @@ public class Table {
         }
     }
 
-    // Move a card to final deck from table deck
+    /**
+     * Move a card from ArrayList to final deck
+     *
+     * @param from ArrayList where the card is moved from
+     * @param to ArrayDeque where the card is moved to
+     */
     public void moveCardToFinalDeck(ArrayList from, ArrayDeque to) {
         Card c = (Card) from.get(from.size() - 1);
         if (possibleToAddToFinalDeck(c, to)) {
@@ -159,7 +190,12 @@ public class Table {
         }
     }
 
-    // Move a card to table deck
+    /**
+     * Move a card from ArrayDeque to table deck
+     *
+     * @param from ArrayDeque where the card is moved from
+     * @param to ArrayList where the card is moved to
+     */
     public void moveCardToTableDeck(ArrayDeque from, ArrayList to) {
         Card c = (Card) from.getLast();
         if (possibleToAddToTableDeck(c, to)) {
@@ -167,20 +203,22 @@ public class Table {
         }
     }
 
-    // Move a card to table deck from table deck
-    /*public void moveCardToTableDeck(ArrayList from, ArrayList to) {
-        Card c = (Card) from.get(from.size() - 1);
-        if (possibleToAddToTableDeck(c, to)) {
-            to.add(from.get(from.size() - 1));
-            from.remove(from.size() - 1);
-        }
-    }*/
-    // Move the top card of main deck to the bottom of the pile
+    /**
+     * Method to move first card from mainDeck to the bottom of the stack
+     */
     public void moveMainDeckCardToTheBottom() {
         mainDeck.addFirst(mainDeck.pollLast());
     }
 
-    // Is the card valid for movable table stack
+    /**
+     * Method to check if card is eligible to move in stack
+     * 
+     * @param check the Card which is "behind" the card on top
+     * @param onTop the Card on top
+     * 
+     * @return true if card is valid for movable stack
+     *         false if card is not valid for movable stack
+     */
     public boolean isCardValidForMovableStack(Card check, Card onTop) {
         if (check.suit.equals("Clubs")) {
             if (onTop.suit.equals("Hearts") || onTop.suit.equals("Diamonds")) {
@@ -210,10 +248,16 @@ public class Table {
         return false;
     }
 
-    // Check how big stack is movable from table stack with one turn
-    // First check from which stack user wanted to move from
-    // Then check if it's possible to move more then 1 card at a time
-    // Call method howManyCardsToMove for next step
+    /**
+     * Check how big stack is movable from table stack with one turn
+     * First check from which stack user wanted to move from
+     * Then check if it's possible to move more then 1 card at a time
+     * Call method howManyCardsToMove for next step
+     * 
+     * @param n variable to know which stack we want to know if it has a stack to move
+     * 
+     * @return returns 1 if there is only 1 movable card, otherwise uses method howManyCardsWantToMove to ask user how many cards wants to move
+     */ 
     public int howBigStackIsMovableFromTableStack(int n) {
         int count = 1;
         if (n >= 6 && n <= 12) {
@@ -235,8 +279,15 @@ public class Table {
         return count;
     }
 
-    // Method gets count how many cards can be moved from list
-    // Asks user how many cards wants to move and does the desired move
+    /** 
+     * Method gets count how many cards can be moved from list
+     * Asks user how many cards wants to move and does the desired move
+     * 
+     * @param count count of how many cards can be moved at the same time
+     * @param from ArrayList where the move is made from
+     * 
+     * @return returns user input or 1
+     */
     public int howManyCardsWantToMove(int count, ArrayList from) {
         System.out.println("You can move following cards: ");
         for (int i = count; i > 0; i--) {
@@ -251,8 +302,13 @@ public class Table {
         return 1;
     }
 
-    // Move a stack from table deck
-    // n is the value of how many cards want to be moved
+    /** 
+     * Move a stack from table deck
+     * 
+     * @param n value of how many cards want to be moved
+     * @param from ArrayList where the move is made from
+     * @param to  ArrayList where the move is made to
+     */
     public void moveAStackFromTableStack(int n, ArrayList from, ArrayList to) {
         if (n > 0 || n < from.size()) {
             Card firstOfStack = (Card) from.get(from.size() - (n));
@@ -266,7 +322,11 @@ public class Table {
         }
     }
 
-    // Method for printing, check if given list is empty or not
+    /**
+     * Method for printing, check if given list is empty or not
+     * 
+     * @param check ArrayDeque where the check is made
+     */
     public void checkIfListIsEmptyHandFinal(ArrayDeque check) {
         if (check.isEmpty()) {
             System.out.print("Empty. | ");
@@ -275,7 +335,11 @@ public class Table {
         }
     }
 
-    // Method for printing, check if given list is empty or not
+    /** 
+     * Method for printing, check if given list is empty or not
+     * 
+     * @param check ArrayList where the check is made
+     */ 
     public void checkIfListIsEmptyTableDeck(ArrayList check) {
         if (check.isEmpty()) {
             System.out.print("Empty. | ");
@@ -283,7 +347,14 @@ public class Table {
             System.out.print(check.get(check.size() - 1) + " | ");
         }
     }
-
+    
+    /**
+     * Method for checking if the move wanted is correct and then doing the move
+     * 
+     * @param moveStart from which stack is wanted to move from
+     * @param cardsToMove how many cards user wants to move
+     * @param moveEnd to which stack is wanted to move to
+     */
     public void checkIfMoveIsCorrectAndContinue(int moveStart, int cardsToMove, int moveEnd) {
         if (moveStart < 0 || moveStart > 12 || moveEnd < 0 || moveEnd > 12) {
             System.out.println("Wrong move, please start over.");
@@ -297,7 +368,13 @@ public class Table {
         }
     }
 
-    // Does the desired move
+    /**
+     * Method for doing the move
+     * 
+     * @param moveStart from which stack is wanted to move from
+     * @param cardsToMove how many cards user wants to move
+     * @param moveEnd to which stack is wanted to move to
+     */
     public void doTheMove(int moveStart, int cardsToMove, int moveEnd) {
         if (moveEnd == 1) {
             System.out.println("Wrong move, please start over.");
@@ -329,13 +406,24 @@ public class Table {
         }
     }
 
-    // Calculate and return string of the game duration.
+    /**
+     * Calculate and return string of the game duration.
+     * 
+     * @param startTime system nanoTime from the start of the game
+     * @param endTime system nanoTime from the end of the game
+     * 
+     * @return String of how long it took to press exit/finish the game
+     */
     public String getTimeUsedInGame(long startTime, long endTime) {
         long totalTime = (endTime - startTime) / 1000000000;
         return "Your game took " + totalTime + " seconds.";
     }
 
-    // Return the count of moves made as a string
+    /**
+     * Method for getting the count of made moves during the game
+     * 
+     * @return String of how many moves made in the game
+     */
     public String getMoves() {
         return "You made total of: " + count + " moves during the game.";
     }

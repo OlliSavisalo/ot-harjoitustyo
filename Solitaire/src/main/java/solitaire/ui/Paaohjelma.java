@@ -1,6 +1,7 @@
 
 package solitaire.ui;
 
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -10,7 +11,7 @@ import java.util.*;
 public class Paaohjelma {
 
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Scanner input = new Scanner(System.in);
         Solitaire solitaire = new Solitaire(input);
         solitaire.startNewGame();

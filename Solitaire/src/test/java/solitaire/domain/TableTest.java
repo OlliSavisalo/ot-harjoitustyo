@@ -61,6 +61,13 @@ public class TableTest {
     }
     
     @Test
+    public void checkThatMoveIsCorrectAndDoTheMove() {
+        table.mainDeck.add(new Card("Hearts", 1));
+        table.checkIfMoveIsCorrectAndContinue(1, 1, 4);
+        assertEquals("Hearts, 1", table.finalDeckHearts.getLast().toString());
+    }
+    
+    @Test
     public void moveACardToTableDeckFromDeque() {
         table.mainDeck.addLast(new Card("Hearts", 5));
         table.tableDeck1.clear();
