@@ -10,7 +10,7 @@
 | 24.11 |  7   | Sovelluksen rakenteen parantamista ja tekstikäyttöliittymän tekeminen  |
 | 01.12 |  7   | Sovelluksen uudelleen järjestämistä, mm. pakkausrakenne uusiksi, käyttöliittymä uusiksi |
 | 02.12 |  8   | Sovelluksen uudelleen järjestämistä, toiminnallisuuksien lisäämistä, testien sekä kaavioiden tekemistä ja githubin päivittämistä  |
+| 07.12 |  6   | Sovelluksen tietokannan suunnittelua, tekstikäyttöliittymän suunnittelua ja mahdollisesti tulevan graafisen käyttöliittymän suunnittelua  |
+| 08.12 |  6   | Sovelluksen tietokannan toteutusta, käyttöliittymän parantelua sekä dokumentointia  |
 |       |      |  |
-|       |      |  |
-|       |      |  |
-| yht   |  37  | | 
+| yht   |  49  | | 
