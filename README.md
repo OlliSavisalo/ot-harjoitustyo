@@ -7,6 +7,7 @@ Pelin viimeisimmässä versiossa on käytössä tekstiliittymä, joka kysyy kort
 
 ### Releaset
 [Solitaire, viikko 6](https://github.com/OlliSavisalo/ot-harjoitustyo/releases/tag/viikko6)
+
 [Solitaire, viikko 5](https://github.com/OlliSavisalo/ot-harjoitustyo/releases/tag/viikko5)
 
 ### Dokumentaatio
