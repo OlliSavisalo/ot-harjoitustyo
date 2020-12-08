@@ -21,9 +21,9 @@ Sovellus koostuu yhdestä näkymästä ja näkymän päälle tulee alussa pienem
 
 - Suuri pelinäkymä aukeaa
 - Pienempi ponnahdusikkuna tulee esille
-	- Uuden pelin aloitus
-	- TOP-listan tarkastaminen
-	- Pelistä poistuminen (EXIT)
+	- Uuden pelin aloitus (toteutettu)
+	- TOP-listan tarkastaminen (toteutettu)
+	- Pelistä poistuminen (EXIT) (toteutettu)
 
 ### Pelin kulku
 
@@ -31,9 +31,9 @@ Sovellus koostuu yhdestä näkymästä ja näkymän päälle tulee alussa pienem
 
 ### Pelin loppu
 
-- Pelaaja voi painaa Lopeta-nappia, jolloin peli palautuu alkunäkymään
-- Mikäli peli menee läpi (kaikki kortit maittain järjestyksessä "yläruudukoissa"), ajanotto loppuu ja esiin tulee ponnahdusikkuna missä näkyy pelin kesto sekä voi syöttää nimimerkin TOP-listaa varten (josta näkyy top10 pelatut ajat)
-- Peli palautuu alkuruutuun
+- Pelaaja voi painaa Lopeta-nappia, jolloin peli palautuu alkunäkymään (toteutettu)
+- Mikäli peli menee läpi (kaikki kortit maittain järjestyksessä "yläruudukoissa"), ajanotto loppuu ja esiin tulee ponnahdusikkuna missä näkyy pelin kesto sekä voi syöttää nimimerkin TOP-listaa varten (josta näkyy top10 pelatut ajat) (osin toteutettu)
+- Peli palautuu alkuruutuun (toteutettu)
 
 ## Jatkokehitysideoita
 
