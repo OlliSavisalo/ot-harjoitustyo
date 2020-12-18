@@ -12,5 +12,8 @@
 | 02.12 |  8   | Sovelluksen uudelleen järjestämistä, toiminnallisuuksien lisäämistä, testien sekä kaavioiden tekemistä ja githubin päivittämistä  |
 | 07.12 |  6   | Sovelluksen tietokannan suunnittelua, tekstikäyttöliittymän suunnittelua ja mahdollisesti tulevan graafisen käyttöliittymän suunnittelua  |
 | 08.12 |  6   | Sovelluksen tietokannan toteutusta, käyttöliittymän parantelua sekä dokumentointia  |
-|       |      |  |
-| yht   |  49  | | 
+| 11.12 |  5   | Sovelluksen ja sen tietokannan parantelua |
+| 14.12 |  3   | Sovelluksen parantelua ja testien tekemistä |
+| 17.12 |  7   | Sovelluksen parantelua ja testien tekemistä |
+| 18.12 |  8   | Sovelluksen viimeiset parantelut ja dokumentaation tekemistä |
+| yht   |  72  |
