@@ -20,6 +20,8 @@ Pelin viimeisimmässä versiossa on käytössä tekstiliittymä, joka kysyy kort
 
 [Tuntikirjanpito](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
+[Testausdokumentti](https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/testausdokumentti.md)
+
 ### Komentorivitoiminnot
 
 #### Testaus
