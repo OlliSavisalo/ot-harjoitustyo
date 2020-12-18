@@ -43,6 +43,7 @@ Valinta 0 keskeyttää pelin ja palauttaa käyttäjän päävalikkoon.
 
 #### Pelin loppu
 Alla olevassa kuvassa käyttäjä on itse lopettanut pelin ja saa tiedon tehdyistä siirroista ja pelin kestosta. Mikäli peli olisi mennyt läpi, olisi ohjelma kysynyt käyttäjän nimimerkkiä ja lisännyt suorituksen suorituslistaan.
+
 <img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/loppupeli.PNG">
 
 ### Top-listat
