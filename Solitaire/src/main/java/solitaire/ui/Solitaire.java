@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package solitaire.ui;
 
 import java.sql.SQLException;
@@ -23,8 +18,13 @@ public class Solitaire {
     Map<Integer, String> commandsMoveTo;
     long startTime;
     long endTime;
-    
 
+    /**
+     * Construct the Solitaire class. New table Two TreeMaps so it's easy to
+     * print which commands can be used.
+     *
+     * @param input
+     */
     public Solitaire(Scanner input) {
         this.table = new Table(input);
         this.input = input;
@@ -35,7 +35,9 @@ public class Solitaire {
 
     }
 
-    // Enters moves to Treemap so we can print them when wanted.
+    /**
+     * Enters moves to Treemap so we can print them when wanted.
+     */
     private void enterCommandsToMoveFrom() {
         commandsMoveFrom.put(1, "Move from hand deck.");
         commandsMoveFrom.put(2, "Move from final deck Clubs.");
@@ -52,8 +54,11 @@ public class Solitaire {
         commandsMoveFrom.put(0, "Exit game.");
     }
 
-    // Enters moves to Treemap so we can print them when wanted.
+    /**
+     * Enters moves to Treemap so we can print them when wanted.
+     */
     private void enterCommandsToMoveTo() {
+        commandsMoveTo.put(1, "Move to bottom of hand deck (Only if you have selected 1 previously).");
         commandsMoveTo.put(2, "Move to final deck Clubs.");
         commandsMoveTo.put(3, "Move to final deck Spades.");
         commandsMoveTo.put(4, "Move to final deck Hearts.");
@@ -68,7 +73,9 @@ public class Solitaire {
         commandsMoveTo.put(0, "Exit game.");
     }
 
-    // Print moves 
+    /**
+     * Print available moves
+     */
     public void printMovesFrom() {
         for (Entry e : commandsMoveFrom.entrySet()) {
             System.out.println(e.getKey() + ", " + e.getValue());
@@ -76,7 +83,9 @@ public class Solitaire {
         System.out.println("From which deck you want to move from?");
     }
 
-    // Print moves
+    /**
+     * Print available moves
+     */
     public void printMovesTo() {
         for (Entry e : commandsMoveTo.entrySet()) {
             System.out.println(e.getKey() + ", " + e.getValue());
@@ -84,7 +93,9 @@ public class Solitaire {
         System.out.println("Which deck you want to move to?");
     }
 
-    // Check if empty and Print hand deck and final decks
+    /**
+     * Check if empty and Print hand deck and final decks
+     */
     public void printHandAndFinalDecks() {
         table.checkIfListIsEmptyHandFinal(table.mainDeck);
         table.checkIfListIsEmptyHandFinal(table.finalDeckClubs);
@@ -95,7 +106,9 @@ public class Solitaire {
         System.out.println();
     }
 
-    // Check if empty and Print table decks
+    /**
+     * Check if empty and Print table decks
+     */
     public void printTableDecks() {
         table.checkIfListIsEmptyTableDeck(table.tableDeck1);
         table.checkIfListIsEmptyTableDeck(table.tableDeck2);
@@ -108,22 +121,49 @@ public class Solitaire {
         System.out.println();
     }
 
-    // Print end of the game, if all final decks full you're a winner. Otherwise loser
-    // Print also the duration of the game
-    public void printEndGame() throws SQLException {
+    /**
+     * Print end of the game, if all final decks full you're a winner, otherwise
+     * loser. Print also the duration of the game. If winner, call method
+     * askUserNameAddToTopList()
+     *
+     * @param topList
+     * @throws SQLException
+     */
+    public void printEndGame(ToplistDao topList) throws SQLException {
         if (table.finalDeckClubs.size() == 13 && table.finalDeckDiamonds.size() == 13 && table.finalDeckHearts.size() == 13 && table.finalDeckSpades.size() == 13) {
             System.out.println("Congratulations! You're a winner!");
-            System.out.println(table.getTimeUsedInGame(startTime, endTime));
-            System.out.println(table.getMoves());
+            System.out.println("Your game time was: " + table.getTimeUsedInGame(startTime, endTime));
+            System.out.println("You made total of: " + table.getMoves() + " moves during the game.");
+            askUserNameAddToTopList(topList);
         } else {
             System.out.println("You didn't finish the game. Better luck next time.");
-            System.out.println(table.getTimeUsedInGame(startTime, endTime));
-            System.out.println(table.getMoves());
+            System.out.println("Your game time was: " + table.getTimeUsedInGame(startTime, endTime));
+            System.out.println("You made total of: " + table.getMoves() + " moves during the game.");
         }
     }
 
-    // Which toplist wants to be seen
-    public void chooseTopList(ToplistDao topList) throws SQLException {        
+    /**
+     * If user completed the game, ask name and then call ToplistDao method
+     * enterNewResultToTopList() Method adds user to the toplist.
+     *
+     * @param topList
+     * @throws SQLException
+     */
+    public void askUserNameAddToTopList(ToplistDao topList) throws SQLException {
+        System.out.println("Let's add you to toplist.");
+        System.out.println("What is your name?");
+        String name = input.next();
+        topList.enterNewResultToTopList(name, table.getTimeUsedInGame(startTime, endTime), table.getMoves());
+    }
+
+    /**
+     * Ask user which toplist wants to be seen and call for the printing method.
+     * Choices: in time order and order by move count
+     *
+     * @param topList
+     * @throws SQLException
+     */
+    public void chooseTopList(ToplistDao topList) throws SQLException {
         System.out.println("Which toplist you want to see?");
         System.out.println("1. Fastest times");
         System.out.println("2. Fewest moves");
@@ -137,29 +177,58 @@ public class Solitaire {
         }
     }
 
-    // Prints toplist database in time order
-    public void getTopListInTimeOrder(ToplistDao topList) throws SQLException {        
-        topList.getToplistInTimeOrder();
+    /**
+     * Prints toplist database in time order
+     *
+     * @param topList
+     * @throws SQLException
+     */
+    public void getTopListInTimeOrder(ToplistDao topList) throws SQLException {
+        ArrayList<String> list = topList.getToplistInTimeOrder();
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
     }
 
-    // Prints toplist database in move order
-    public void getTopListInMoveOrder(ToplistDao topList) throws SQLException {        
-        topList.getToplistInMoveOrder();
+    /**
+     * Prints toplist database in move order
+     *
+     * @param topList
+     * @throws SQLException
+     */
+    public void getTopListInMoveOrder(ToplistDao topList) throws SQLException {
+        ArrayList<String> list = topList.getToplistInMoveOrder();
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
     }
 
-    // Prints the first menu where you can decide whether to start new game, check toplist or exit
+    /**
+     * Prints choices for main menu.
+     */
+    public void printMainMenuChoices() {
+        System.out.println("Decide from the following options: ");
+        System.out.println("1. Start new Game");
+        System.out.println("2. Check toplist");
+        System.out.println("3. Exit the game.");
+    }
+
+    /**
+     * Prints the first menu where you can decide whether to start new game,
+     * check toplist or exit.
+     *
+     * @throws SQLException
+     */
     public void printMainMenu() throws SQLException {
         ToplistDao topList = new ToplistDao();
         System.out.println("Welcome to Solitaire!");
         while (true) {
-            System.out.println("Decide from the following options: ");
-            System.out.println("1. Start new Game");
-            System.out.println("2. Check toplist");
-            System.out.println("3. Exit the game.");
+            printMainMenuChoices();
             int firstChoice = input.nextInt();
             if (firstChoice == 1) {
+                table = new Table(input);
                 table.startDeal();
-                playTheGame();
+                playTheGame(topList);
             } else if (firstChoice == 2) {
                 chooseTopList(topList);
             } else if (firstChoice == 3) {
@@ -169,10 +238,18 @@ public class Solitaire {
             }
         }
     }
-    
-    public void playTheGame() throws SQLException {
+
+    /**
+     * Method for playing the game. Takes System.nanoTime() at the beginning and
+     * in the end of the game. While game is on, print moves, call moves and
+     * check if user is a winner. In the end, call method printEndGame().
+     *
+     * @param topList
+     * @throws SQLException
+     */
+    public void playTheGame(ToplistDao topList) throws SQLException {
         startTime = System.nanoTime();
-        while (table.finalDeckClubs.size() <= 13 && table.finalDeckDiamonds.size() <= 13 && table.finalDeckHearts.size() <= 13 && table.finalDeckSpades.size() <= 13) {
+        while (true) {
             printHandAndFinalDecks();
             printTableDecks();
             printMovesFrom();
@@ -186,14 +263,21 @@ public class Solitaire {
             if (moveEnd == 0) {
                 break;
             }
-            table.checkIfMoveIsCorrectAndContinue(moveStart, cardsToMove, moveEnd);            
+            table.checkIfMoveIsCorrectAndContinue(moveStart, cardsToMove, moveEnd);
+            if (table.finalDeckClubs.size() == 13 && table.finalDeckDiamonds.size() == 13 && table.finalDeckHearts.size() == 13 && table.finalDeckSpades.size() == 13) {
+                break;
+            }
         }
         endTime = System.nanoTime();
-        printEndGame();
+        printEndGame(topList);
     }
 
+    /**
+     * Method for start of the program. Call method printMainMenu()
+     *
+     * @throws SQLException
+     */
     public void startNewGame() throws SQLException {
-        printMainMenu();  
-        
+        printMainMenu();
     }
 }

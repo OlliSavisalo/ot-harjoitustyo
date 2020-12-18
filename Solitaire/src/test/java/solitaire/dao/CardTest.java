@@ -28,7 +28,7 @@ public class CardTest {
     public void cannotAddWrongSuitOnACard() {        
         Card c = new Card("risti", 1);
     }
-    
+        
     @Test
     public void cardAddedNumberAndSuitIsRight() {
         Card c = new Card("Hearts", 2);

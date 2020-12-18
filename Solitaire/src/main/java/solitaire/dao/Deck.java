@@ -1,4 +1,3 @@
-
 package solitaire.dao;
 
 import java.util.*;
@@ -11,9 +10,12 @@ public class Deck {
 
     ArrayList<Card> deckInOrder;
 
+    /**
+     * Construct the Deck class. Creates new cards and add them to an ArrayList
+     * in order. Loops creates 52 new cards with a spesific suit and adds them
+     * to Arraylist
+     */
     public Deck() {
-        // ArrayList to compile a full deck in order
-        // Loop creates 52 new cards with a spesific suit and adds them to Arraylist
         this.deckInOrder = new ArrayList<>();
         for (int i = 1; i <= 13; i++) {
             Card c = new Card("Hearts", i);
@@ -33,12 +35,16 @@ public class Deck {
         }
     }
 
+    /**
+     * Shuffle the deck in order. Add shuffled deck to an ArrayDeque for more
+     * effective and easier deck handling. We don't have a situation that we
+     * need to get a card from middle of the deck so deque is more effective
+     *
+     * @return ArrayDeque shuffledDeck
+     */
     public ArrayDeque<Card> getShuffledDeck() {
         ArrayDeque<Card> shuffledDeck = new ArrayDeque<>();
-        // Shuffle the deck which is in order
         Collections.shuffle(deckInOrder);
-        // Add shuffled deck to an ArrayDeque for more effective and easier deck handling
-        // We don't have a situation that we need to get a card from middle of the deck so deque is more effective
         for (int i = 0; i < 52; i++) {
             shuffledDeck.addLast(deckInOrder.get(i));
         }

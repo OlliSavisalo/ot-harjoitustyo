@@ -13,24 +13,19 @@ import solitaire.dao.Deck;
  *
  * @author ollisavi
  */
+
 public class Table {
 
     Deck d;
     Scanner input;
-    // Counter to retrieve made moves
     int count;
-    // Two different move maps because we have different type of lists (Deques and lists)
     Map<Integer, ArrayDeque> moves1to5;
     Map<Integer, ArrayList> moves6to12;
-    // When called, table class creates full table with the Solitaire schematic
-    // In Solitaire we need a lot of different size lists which are made using deques, since they are effective and easy to use
     public ArrayDeque<Card> mainDeck;
-    // Final decks are the ones we want to have our cards in.
     public ArrayDeque<Card> finalDeckHearts;
     public ArrayDeque<Card> finalDeckDiamonds;
     public ArrayDeque<Card> finalDeckSpades;
     public ArrayDeque<Card> finalDeckClubs;
-    // In the table we have 7 different decks
     public ArrayList<Card> tableDeck1;
     public ArrayList<Card> tableDeck2;
     public ArrayList<Card> tableDeck3;
@@ -39,9 +34,20 @@ public class Table {
     public ArrayList<Card> tableDeck6;
     public ArrayList<Card> tableDeck7;
 
+    /**
+     * Construct all variables used in the game.
+     * Counter to retrieve made moves.
+     * In mainDeck we want to have the whole shuffled deck and we can start dealing cards from there.
+     * Any leftover cards will be used as the "hand deck" during the game.
+     * Final decks are the ones we want to have our cards in.
+     * In the table we have 7 different decks.
+     * Two different move maps because we have different type of lists (Deques and lists).
+     * Call for method enterCommandsToMaps() to enter commands to treemaps.
+     * 
+     * @param input 
+     */
     public Table(Scanner input) {
-        // In mainDeck we want to have the whole shuffled deck and we can start dealing cards from there
-        // Any leftover cards will be used as the "hand deck" during the game
+        
         this.d = new Deck();
         this.input = input;
         this.count = 0;
@@ -62,6 +68,9 @@ public class Table {
         enterCommandsToMaps();
     }
 
+    /**
+     * Put commands to TreeMaps so it is easy to know which deque or table we want to use during the game.
+     */
     private void enterCommandsToMaps() {
         moves1to5.put(1, mainDeck);
         moves1to5.put(2, finalDeckClubs);
@@ -212,12 +221,12 @@ public class Table {
 
     /**
      * Method to check if card is eligible to move in stack
-     * 
+     *
      * @param check the Card which is "behind" the card on top
      * @param onTop the Card on top
-     * 
-     * @return true if card is valid for movable stack
-     *         false if card is not valid for movable stack
+     *
+     * @return true if card is valid for movable stack false if card is not
+     * valid for movable stack
      */
     public boolean isCardValidForMovableStack(Card check, Card onTop) {
         if (check.suit.equals("Clubs")) {
@@ -249,15 +258,17 @@ public class Table {
     }
 
     /**
-     * Check how big stack is movable from table stack with one turn
-     * First check from which stack user wanted to move from
-     * Then check if it's possible to move more then 1 card at a time
-     * Call method howManyCardsToMove for next step
-     * 
-     * @param n variable to know which stack we want to know if it has a stack to move
-     * 
-     * @return returns 1 if there is only 1 movable card, otherwise uses method howManyCardsWantToMove to ask user how many cards wants to move
-     */ 
+     * Check how big stack is movable from table stack with one turn First check
+     * from which stack user wanted to move from Then check if it's possible to
+     * move more then 1 card at a time Call method howManyCardsToMove for next
+     * step
+     *
+     * @param n variable to know which stack we want to know if it has a stack
+     * to move
+     *
+     * @return returns 1 if there is only 1 movable card, otherwise uses method
+     * howManyCardsWantToMove to ask user how many cards wants to move
+     */
     public int howBigStackIsMovableFromTableStack(int n) {
         int count = 1;
         if (n >= 6 && n <= 12) {
@@ -279,13 +290,13 @@ public class Table {
         return count;
     }
 
-    /** 
-     * Method gets count how many cards can be moved from list
-     * Asks user how many cards wants to move and does the desired move
-     * 
+    /**
+     * Method gets count how many cards can be moved from list Asks user how
+     * many cards wants to move and does the desired move
+     *
      * @param count count of how many cards can be moved at the same time
      * @param from ArrayList where the move is made from
-     * 
+     *
      * @return returns user input or 1
      */
     public int howManyCardsWantToMove(int count, ArrayList from) {
@@ -302,12 +313,12 @@ public class Table {
         return 1;
     }
 
-    /** 
+    /**
      * Move a stack from table deck
-     * 
+     *
      * @param n value of how many cards want to be moved
      * @param from ArrayList where the move is made from
-     * @param to  ArrayList where the move is made to
+     * @param to ArrayList where the move is made to
      */
     public void moveAStackFromTableStack(int n, ArrayList from, ArrayList to) {
         if (n > 0 || n < from.size()) {
@@ -324,7 +335,7 @@ public class Table {
 
     /**
      * Method for printing, check if given list is empty or not
-     * 
+     *
      * @param check ArrayDeque where the check is made
      */
     public void checkIfListIsEmptyHandFinal(ArrayDeque check) {
@@ -335,11 +346,11 @@ public class Table {
         }
     }
 
-    /** 
+    /**
      * Method for printing, check if given list is empty or not
-     * 
+     *
      * @param check ArrayList where the check is made
-     */ 
+     */
     public void checkIfListIsEmptyTableDeck(ArrayList check) {
         if (check.isEmpty()) {
             System.out.print("Empty. | ");
@@ -347,16 +358,18 @@ public class Table {
             System.out.print(check.get(check.size() - 1) + " | ");
         }
     }
-    
+
     /**
      * Method for checking if the move wanted is correct and then doing the move
-     * 
+     *
      * @param moveStart from which stack is wanted to move from
      * @param cardsToMove how many cards user wants to move
      * @param moveEnd to which stack is wanted to move to
      */
     public void checkIfMoveIsCorrectAndContinue(int moveStart, int cardsToMove, int moveEnd) {
         if (moveStart < 0 || moveStart > 12 || moveEnd < 0 || moveEnd > 12) {
+            System.out.println("Wrong move, please start over.");
+        } else if (!checkIfTableIsEmpty(moveStart)) {
             System.out.println("Wrong move, please start over.");
         } else {
             if (moveStart == 1 && moveEnd == 1) {
@@ -367,10 +380,33 @@ public class Table {
             }
         }
     }
+    /**
+     * Method for checking if the table is empty where user wants to move from
+     * 
+     * @param moveStart from which table user wants to remove from
+     * 
+     * @return false if table is empty, true if table is not empty 
+     */
+    public boolean checkIfTableIsEmpty(int moveStart) {
+        if (moveStart == 1 && mainDeck.isEmpty()) {
+            return false;
+        } else if (moveStart == 2 && finalDeckClubs.isEmpty()) {
+            return false;
+        } else if (moveStart == 3 && finalDeckSpades.isEmpty()) {
+            return false;
+        } else if (moveStart == 4 && finalDeckHearts.isEmpty()) {
+            return false;
+        } else if (moveStart == 5 && finalDeckDiamonds.isEmpty()) {
+            return false;
+        } else if (moveStart > 5 && moveStart < 13 && moves6to12.get(moveStart).isEmpty()) {
+            return false;
+        }
+        return true;
+    }
 
     /**
      * Method for doing the move
-     * 
+     *
      * @param moveStart from which stack is wanted to move from
      * @param cardsToMove how many cards user wants to move
      * @param moveEnd to which stack is wanted to move to
@@ -408,23 +444,27 @@ public class Table {
 
     /**
      * Calculate and return string of the game duration.
-     * 
+     *
      * @param startTime system nanoTime from the start of the game
      * @param endTime system nanoTime from the end of the game
-     * 
+     *
      * @return String of how long it took to press exit/finish the game
      */
     public String getTimeUsedInGame(long startTime, long endTime) {
-        long totalTime = (endTime - startTime) / 1000000000;
-        return "Your game took " + totalTime + " seconds.";
+        long totalSec = (endTime - startTime) / 1000000000;
+        long hours = totalSec / 3600;
+        long minutes = (totalSec % 3600) / 60;
+        long seconds = totalSec % 60;
+        String returnTotalTime = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+        return returnTotalTime;
     }
 
     /**
      * Method for getting the count of made moves during the game
-     * 
-     * @return String of how many moves made in the game
+     *
+     * @return int of how many moves made in the game
      */
-    public String getMoves() {
-        return "You made total of: " + count + " moves during the game.";
+    public int getMoves() {
+        return this.count;
     }
 }

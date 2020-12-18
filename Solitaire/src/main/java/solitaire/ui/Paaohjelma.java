@@ -10,7 +10,12 @@ import java.util.*;
  */
 public class Paaohjelma {
 
-    
+    /**
+     * Main class to call for Solitaire class and start the game.
+     * 
+     * @param args
+     * @throws SQLException 
+     */
     public static void main(String[] args) throws SQLException {
         Scanner input = new Scanner(System.in);
         Solitaire solitaire = new Solitaire(input);
