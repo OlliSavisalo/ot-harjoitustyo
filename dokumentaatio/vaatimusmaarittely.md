@@ -20,7 +20,7 @@ Sovellus koostuu tekstikäyttöliittymästä, jossa eri näkymät ovat päävali
 <img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/toplist.PNG">
 
 ### Siirto
-<img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/siirto.PNG" width="400">
+<img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/siirto.PNG">
 
 ### Pelin loppu
 <img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/loppupeli.PNG">
