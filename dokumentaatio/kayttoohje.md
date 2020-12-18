@@ -1,10 +1,10 @@
 # Käyttöohje Solitaire
 
-Lataa .jar-tiedosto [Solitaire, viikko 6](https://github.com/OlliSavisalo/ot-harjoitustyo/releases/download/viikko6/Solitaire.jar)
+Lataa .jar-tiedosto [Solitaire](https://github.com/OlliSavisalo/ot-harjoitustyo/releases/download/viikko7/Solitaire.jar)
 
 tai vaihtoehtoisesti
 
-Lataa ja pura tiedosto [Solitaire.zip](https://github.com/OlliSavisalo/ot-harjoitustyo/archive/viikko6.zip)
+Lataa ja pura tiedosto [Solitaire.zip](https://github.com/OlliSavisalo/ot-harjoitustyo/archive/viikko7.zip)
 
 ## Ohjelman käynnistys
 
@@ -21,7 +21,7 @@ java Paaohjelma.java
 
 ### Käynnistyksen mahdolliset virheet
 
-Viimeisimmässä versiossa ohjelmaan on lisätty tietokanta, johon tullaan tallentamaan läpipäässeiden pelien pelaajan nimi, pelin kesto sekä tehtyjen siirtojen määrä. Ohjelman alussa tämä tietokanta alustetaan, sekä lisätään muutama rivi, jotta voimme testata tietokannan toimivuuden.
+Viimeisessä versiossa ohjelmaan lisätty tietokanta, johon tallennetaan läpipäässeiden pelien pelaajan nimi, pelin kesto sekä tehtyjen siirtojen määrä. Ohjelman alussa tämä tietokanta alustetaan, sekä lisätään muutama rivi, jotta voimme testata tietokannan toimivuuden.
 Mikäli siis käynnistettäessä tulee SQL-virhe, pitää kansiosta poistaa toplist.db-tiedosto.
 
 ## Ohjelman kulku
