@@ -11,12 +11,12 @@ Käyttöliittymän sisältävät luokat ollaan jätetty yksikkötesteistä kokon
 ## Testauskattavuus
 
 Sovelluksen testauskattavuus pois lukien käyttöliittymän luokat:
--Rivikattavuus 91%
--Haarautumakattavuus 78%
+- Rivikattavuus 91%
+- Haarautumakattavuus 78%
 
 <img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/Solitaire_Jacoco.png">
 
 ## Sovellukseen jääneet laatuongelmat
 Sovellus antaa tällä hetkellä virheen seuraavissa tapauksissa:
--Käyttäjä syöttää tekstin numeron sijaan
--Mikäli tietokannan sisältävä tiedosto toplist.db on olemassa jo kansiossa, tulee SQLError
+- Käyttäjä syöttää tekstin numeron sijaan
+- Mikäli tietokannan sisältävä tiedosto toplist.db on olemassa jo kansiossa, tulee SQLError
