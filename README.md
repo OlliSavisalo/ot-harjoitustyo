@@ -6,6 +6,9 @@ Sovellus on perinteinen korttipeli Pasianssi (tarkemmin Klondike-pasianssi), jos
 Pelin viimeisimmässä versiossa on käytössä tekstiliittymä, joka kysyy korttien siirrot tekstimuodossa ja ottaa komennot vastaan luvuilla 0-12.
 
 ### Releaset
+
+[Solitaire, viikko 7. Loppupalautus](https://github.com/OlliSavisalo/ot-harjoitustyo/releases/tag/viikko7)
+
 [Solitaire, viikko 6](https://github.com/OlliSavisalo/ot-harjoitustyo/releases/tag/viikko6)
 
 [Solitaire, viikko 5](https://github.com/OlliSavisalo/ot-harjoitustyo/releases/tag/viikko5)
