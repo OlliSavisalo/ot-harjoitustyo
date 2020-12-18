@@ -11,8 +11,8 @@ Käyttöliittymän sisältävät luokat ollaan jätetty yksikkötesteistä kokon
 ## Testauskattavuus
 
 Sovelluksen testauskattavuus pois lukien käyttöliittymän luokat:
-Rivikattavuus 91%
-Haarautumakattavuus 78%
+-Rivikattavuus 91%
+-Haarautumakattavuus 78%
 
 <img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/Solitaire_Jacoco.png">
 
