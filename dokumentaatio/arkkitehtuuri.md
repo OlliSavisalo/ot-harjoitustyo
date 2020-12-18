@@ -35,4 +35,20 @@ Tietojen pysyväistallennuksesta vastaa ToplistDao -luokka, johon tallennetaan l
 
 ### Tiedostot
 
-Sovellus tekee itse uuden toplist.db -nimisen tiedoston ja alustaa sinne Toplist-tablen sekä syöttää 5 riviä valmiita syötteitä. Tämä ominaisuus mahdollisesti poistetaan viimeiseen versioon, kun testauksessa on todettu toimivaksi.
+Sovellus tekee itse uuden toplist.db -nimisen tiedoston ja alustaa sinne Toplist-tablen sekä syöttää 5 riviä valmiita syötteitä.
+Käyttäjän läpäistessä pelin, kysyy ohjelma hänen nimeään, jonka jälkeen pelin tiedot syötetään tietokantaan.
+Sovelluksen päävalikossa voi tarkastella suorituslistoja joko nopeusjärjestyksessä tai siirtojen mukaisessa järjestyksessä.
+Sovellus tallentaa tiedot tietokantaan komennolla:
+```
+INSERT INTO Toplist (nimi, aika, siirrot) VALUES ('Olli', '00:01:13', 50)
+```
+Tiedon tallennukseen käytettävät muuttujat luokka ToplistDao saa luokasta Solitaire, kun peli on mennyt läpi.
+
+Sovellus hakee tietokannasta suorituslistat komennoilla:
+```
+SELECT nimi, aika, siirrot FROM Toplist ORDER BY aika
+```
+ja
+```
+SELECT nimi, aika, siirrot FROM Toplist ORDER BY siirrot
+```
