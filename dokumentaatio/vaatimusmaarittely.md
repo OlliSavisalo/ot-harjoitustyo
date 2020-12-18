@@ -14,16 +14,16 @@ Sovelluksella on vain yksi käyttäjärooli ja se on normaali käyttäjä.
 Sovellus koostuu tekstikäyttöliittymästä, jossa eri näkymät ovat päävalikko, suorituslistojen tulostus sekä itse pelin kulku.
 
 ### Päävalikko
-<img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/Mainmenu.PNG" width="500">
+<img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/Mainmenu.PNG">
 
 ### Suorituslistat
-<img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/toplist.PNG" width="500">
+<img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/toplist.PNG">
 
 ### Siirto
-<img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/siirto.PNG" width="500">
+<img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/siirto.PNG" width="400">
 
 ### Pelin loppu
-<img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/loppupeli.PNG" width="500">
+<img src="https://github.com/OlliSavisalo/ot-harjoitustyo/blob/master/dokumentaatio/kuvat/loppupeli.PNG">
 
 ## Perusversion tarjoama toiminnallisuus
 
