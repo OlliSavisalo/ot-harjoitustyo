@@ -52,3 +52,11 @@ ja
 ```
 SELECT nimi, aika, siirrot FROM Toplist ORDER BY siirrot
 ```
+
+## Ohjelman rakenteeseen jääneet heikkoudet
+
+### Käyttöliittymä
+Tekstikäyttöliittymä on vaikeasti luettava, koska tulostetta tulee paljon joka valinnan jälkeen. Tämän takia käyttäjälle voi olla vaikea hahmottaa missä kohdassa peliä mennään. Tähän ongelmaan parannusta saataisiin kenties graafisella käyttöliittymällä, jossa siirrot näkyisivät samantien, eikä tarvitsisi tulostaa samaa asiaa useampaan kertaan.
+
+### Tietokantaluokka
+ToplistDao -luokkaa voisi kehittää siten, että se ei joka kerta peliä käynnistettäessä loisi uutta tiedostoa, vaan osaisi tarkistaa olemassaolon ja tehdä sen mukaan uuden tiedoston tai lukea vanhasta.
